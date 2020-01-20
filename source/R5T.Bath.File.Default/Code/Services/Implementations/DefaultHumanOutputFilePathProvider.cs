@@ -3,7 +3,7 @@
 using R5T.Lombardy;
 
 
-namespace R5T.Bath.File
+namespace R5T.Bath.File.Default
 {
     public class DefaultHumanOutputFilePathProvider : IHumanOutputFilePathProvider
     {

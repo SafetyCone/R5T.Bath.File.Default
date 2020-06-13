@@ -23,9 +23,9 @@ namespace R5T.Bath.File.Default
         /// <summary>
         /// Adds the <see cref="DefaultHumanOutputFileNameProvider"/> implementation of <see cref="IHumanOutputFileNameProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// </summary>
-        public static ServiceAction<IHumanOutputFileNameProvider> AddDefaultHumanOutputFileNameProviderAction(this IServiceCollection services)
+        public static IServiceAction<IHumanOutputFileNameProvider> AddDefaultHumanOutputFileNameProviderAction(this IServiceCollection services)
         {
-            var serviceAction = new ServiceAction<IHumanOutputFileNameProvider>(() => services.AddDefaultHumanOutputFileNameProvider());
+            var serviceAction = ServiceAction<IHumanOutputFileNameProvider>.New(() => services.AddDefaultHumanOutputFileNameProvider());
             return serviceAction;
         }
 
@@ -33,9 +33,9 @@ namespace R5T.Bath.File.Default
         /// Adds the <see cref="DefaultHumanOutputFilePathProvider"/> implementation of <see cref="IHumanOutputFilePathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// </summary>
         public static IServiceCollection AddDefaultHumanOutputFilePathProvider(this IServiceCollection services,
-            ServiceAction<IHumanOutputFileDirectoryPathProvider> addHumanOutputFileDirectoryPathProvider,
-            ServiceAction<IHumanOutputFileNameProvider> addHumanFileNameProvider,
-            ServiceAction<IStringlyTypedPathOperator> addStringlyTypedPathOperator)
+            IServiceAction<IHumanOutputFileDirectoryPathProvider> addHumanOutputFileDirectoryPathProvider,
+            IServiceAction<IHumanOutputFileNameProvider> addHumanFileNameProvider,
+            IServiceAction<IStringlyTypedPathOperator> addStringlyTypedPathOperator)
         {
             services
                 .AddSingleton<IHumanOutputFilePathProvider, DefaultHumanOutputFilePathProvider>()
@@ -51,11 +51,11 @@ namespace R5T.Bath.File.Default
         /// Adds the <see cref="DefaultHumanOutputFilePathProvider"/> implementation of <see cref="IHumanOutputFilePathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// </summary>
         public static ServiceAction<IHumanOutputFilePathProvider> AddDefaultHumanOutputFilePathProviderAction(this IServiceCollection services,
-            ServiceAction<IHumanOutputFileDirectoryPathProvider> addHumanOutputFileDirectoryPathProvider,
-            ServiceAction<IHumanOutputFileNameProvider> addHumanFileNameProvider,
-            ServiceAction<IStringlyTypedPathOperator> addStringlyTypedPathOperator)
+            IServiceAction<IHumanOutputFileDirectoryPathProvider> addHumanOutputFileDirectoryPathProvider,
+            IServiceAction<IHumanOutputFileNameProvider> addHumanFileNameProvider,
+            IServiceAction<IStringlyTypedPathOperator> addStringlyTypedPathOperator)
         {
-            var serviceAction = new ServiceAction<IHumanOutputFilePathProvider>(() => services.AddDefaultHumanOutputFilePathProvider(
+            var serviceAction = ServiceAction<IHumanOutputFilePathProvider>.New(() => services.AddDefaultHumanOutputFilePathProvider(
                 addHumanOutputFileDirectoryPathProvider,
                 addHumanFileNameProvider,
                 addStringlyTypedPathOperator));
@@ -81,7 +81,7 @@ namespace R5T.Bath.File.Default
         /// Adds the <see cref="SpecifiedHumanOutputFileDirectoryPathProvider"/> implementation of <see cref="IHumanOutputFileDirectoryPathProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// Uses the provided <paramref name="humanOutputFileDirectoryPath"/> value.
         /// </summary>
-        public static ServiceAction<IHumanOutputFileDirectoryPathProvider> AddSpecifiedHumanOutputFileDirectoryPathProviderAction(this IServiceCollection services, string humanOutputFileDirectoryPath)
+        public static IServiceAction<IHumanOutputFileDirectoryPathProvider> AddSpecifiedHumanOutputFileDirectoryPathProviderAction(this IServiceCollection services, string humanOutputFileDirectoryPath)
         {
             var serviceAction = new ServiceAction<IHumanOutputFileDirectoryPathProvider>(() => services.AddSpecifiedHumanOutputFileDirectoryPathProvider(humanOutputFileDirectoryPath));
             return serviceAction;
@@ -106,9 +106,9 @@ namespace R5T.Bath.File.Default
         /// Adds the <see cref="SpecifiedHumanOutputFileNameProvider"/> implementation of <see cref="IHumanOutputFileNameProvider"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// Uses the provided <paramref name="humanOutputFileName"/> value.
         /// </summary>
-        public static ServiceAction<IHumanOutputFileNameProvider> AddSpecifiedHumanOutputFileNameProviderAction(this IServiceCollection services, string humanOutputFileName)
+        public static IServiceAction<IHumanOutputFileNameProvider> AddSpecifiedHumanOutputFileNameProviderAction(this IServiceCollection services, string humanOutputFileName)
         {
-            var serviceAction = new ServiceAction<IHumanOutputFileNameProvider>(() => services.AddSpecifiedHumanOutputFileNameProvider(humanOutputFileName));
+            var serviceAction = ServiceAction<IHumanOutputFileNameProvider>.New(() => services.AddSpecifiedHumanOutputFileNameProvider(humanOutputFileName));
             return serviceAction;
         }
     }

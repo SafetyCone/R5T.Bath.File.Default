@@ -1,14 +1,18 @@
 ﻿using System;
 
+using R5T.T0064;
+
 
 namespace R5T.Bath.File.Default
 {
-    public class SpecifiedHumanOutputFileDirectoryPathProvider : IHumanOutputFileDirectoryPathProvider
+    [ServiceImplementationMarker]
+    public class SpecifiedHumanOutputFileDirectoryPathProvider : IHumanOutputFileDirectoryPathProvider, IServiceImplementation
     {
         private string HumanOutputFileDirectoryPath { get; }
 
 
-        public SpecifiedHumanOutputFileDirectoryPathProvider(string humanOutputFileDirectoryPath)
+        public SpecifiedHumanOutputFileDirectoryPathProvider(
+            [NotServiceComponent] string humanOutputFileDirectoryPath)
         {
             this.HumanOutputFileDirectoryPath = humanOutputFileDirectoryPath;
         }

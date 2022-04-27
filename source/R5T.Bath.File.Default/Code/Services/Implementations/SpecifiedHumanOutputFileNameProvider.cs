@@ -1,14 +1,18 @@
 ﻿using System;
 
+using R5T.T0064;
+
 
 namespace R5T.Bath.File.Default
 {
-    public class SpecifiedHumanOutputFileNameProvider : IHumanOutputFileNameProvider
+    [ServiceImplementationMarker]
+    public class SpecifiedHumanOutputFileNameProvider : IHumanOutputFileNameProvider, IServiceImplementation
     {
         private string HumanOutputFileName { get; }
 
 
-        public SpecifiedHumanOutputFileNameProvider(string humanOutputFileName)
+        public SpecifiedHumanOutputFileNameProvider(
+            [NotServiceComponent] string humanOutputFileName)
         {
             this.HumanOutputFileName = humanOutputFileName;
         }

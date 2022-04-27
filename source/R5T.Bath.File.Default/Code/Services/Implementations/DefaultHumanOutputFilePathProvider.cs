@@ -2,10 +2,13 @@
 
 using R5T.Lombardy;
 
+using R5T.T0064;
+
 
 namespace R5T.Bath.File.Default
 {
-    public class DefaultHumanOutputFilePathProvider : IHumanOutputFilePathProvider
+    [ServiceImplementationMarker]
+    public class DefaultHumanOutputFilePathProvider : IHumanOutputFilePathProvider, IServiceImplementation
     {
         private IHumanOutputFileDirectoryPathProvider HumanOutputFileDirectoryPathProvider { get; }
         private IHumanOutputFileNameProvider HumanOutputFileNameProvider { get; }

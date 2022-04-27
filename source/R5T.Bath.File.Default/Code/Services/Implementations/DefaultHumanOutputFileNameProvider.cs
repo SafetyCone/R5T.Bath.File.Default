@@ -1,9 +1,12 @@
 ﻿using System;
 
+using R5T.T0064;
+
 
 namespace R5T.Bath.File.Default
 {
-    public class DefaultHumanOutputFileNameProvider : IHumanOutputFileNameProvider
+    [ServiceImplementationMarker]
+    public class DefaultHumanOutputFileNameProvider : IHumanOutputFileNameProvider, IServiceImplementation
     {
         public const string FileName = "Human Output.txt";
 
